@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+name: Generate Text
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron:  '0 5 * * *' 
+    
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+        
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Install GitHub CLI
+        env: # Or as an environment variable
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          echo $RELEASE_TOKEN > token.txt
+          gh auth login --with-token < token.txt
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+
+      - name: Text Generation
+        run: |
+          python ./generate.py
+          
+      - name: Release Random Text
+        run: |
+          export today=$(date +"%Y%m%d")
+          gh release create "v${today}" -t "Date: ${today}" -n "Random Text for ${today}" ./releases/*
+          
+        
