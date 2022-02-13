@@ -3,7 +3,6 @@ name: Generate Text
 
 # Controls when the workflow will run
 on:
-  push:
   schedule:
     - cron:  '0 5 * * *' 
     
