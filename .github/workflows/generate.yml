@@ -42,10 +42,6 @@ jobs:
         run: |
           export today=$(date +"%Y%m%d")
           python ./generate.py
-          python ./analyze.py
-          git add previous_analysis.json
-          git commit -m 'Previous Analysis Updated for ${today}'
-          git push
 
       - name: Text Analysis
         run: |
