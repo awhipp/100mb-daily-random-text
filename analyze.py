@@ -78,4 +78,5 @@ plt.ylabel('Frequency')
 for i in range(len(xAxis)):
     plt.text(i, yAxis[i] + 100, "{:,}".format(yAxis[i]), rotation=90)
 
-plt.savefig('%s/%s' % (path, analysis_string), bbox_inches='tight')
+plt.savefig('%s/%s' % (path, image_string), bbox_inches='tight')
+plt.savefig('current_distribution.png', bbox_inches='tight')
