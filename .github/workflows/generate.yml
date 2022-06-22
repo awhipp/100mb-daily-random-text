@@ -43,6 +43,10 @@ jobs:
       - name: Text Analysis
         run: |
           python ./analyze.py
+
+      - name: Generate GIF
+        run: |
+          python ./create_gif.py
           
       - name: Update Release
         env: # Or as an environment variable

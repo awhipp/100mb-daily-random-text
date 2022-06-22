@@ -4,4 +4,4 @@ This integrates a daily CI/CD pipeline to generate a large daily random text fil
 
 ## Current Text Distribution
 
-![Current Text Distribution](https://raw.githubusercontent.com/awhipp/100mb-daily-random-text/master/current_distribution.png)
+![Current Text Distribution](https://raw.githubusercontent.com/awhipp/100mb-daily-random-text/master/current_distribution.gif)
