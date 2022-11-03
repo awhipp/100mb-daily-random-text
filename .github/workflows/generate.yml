@@ -17,7 +17,7 @@ jobs:
     steps:
         
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       
       - name: Install GitHub CLI
         env: # Or as an environment variable
@@ -26,9 +26,9 @@ jobs:
           echo $RELEASE_TOKEN > token.txt
           gh auth login --with-token < token.txt
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          python-version: '3.10.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
 
       - name: Grab Dependencies
